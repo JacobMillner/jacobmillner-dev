@@ -1,0 +1,71 @@
+html {
+  background: black;
+}
+.fade-in h2 {
+  color: orange;
+  font-size: 2em;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  letter-spacing: 0.4em;
+  text-align: center;
+}
+.fade-in h2,
+.fade-in h2 span {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5em;
+}
+.fade-in h2 span, img {
+  color: transparent;
+  opacity: 0;
+  animation: OpeningSequence 5.2s linear forwards;
+}
+.fade-in h2:nth-child(1) span {
+  animation-delay: 0s;
+}
+.fade-in h2:nth-child(2) span {
+  animation-delay: 4s;
+}
+.fade-in h2:last-child img {
+  animation: lastFade 4s linear 12s forwards;
+}
+@keyframes OpeningSequence {
+  0% {
+    text-shadow: 0 0 50px orange;
+    letter-spacing: 3.2em;
+    opacity: 0.2;
+  }
+  50% {
+    text-shadow: 0 0 1px orange;
+    letter-spacing: 0.72em;
+    opacity: 0.8;
+  }
+  85% {
+    text-shadow: 0 0 1px orange;
+    opacity: 0.8;
+  }
+  100% {
+    text-shadow: 0 0 10px orange;
+    letter-spacing: 0.4em;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@keyframes lastFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
