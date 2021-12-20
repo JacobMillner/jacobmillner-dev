@@ -1,12 +1,214 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600');
+@import url('https://fonts.googleapis.com/css?family=Lato:700');
+
 html {
-  background: black;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Crimson Text', serif;
+  color: #111;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #FCFCFC;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
+  margin: 130px auto;
+  width: 445px;
 }
 
-.jp {
-  color: darkgreen;
+.navbar {
+  margin: 0 0 70px 0;
 }
+
+.menu {
+  display: inline-block;
+  float: right;
+  padding-top: 6px;
+}
+
+.menu-item {
+  display: inline-block;
+  padding-left: 35px;
+  text-decoration: none;
+  color: #111;
+}
+
+.menu-item:hover {
+  color: #9e9a9a;
+}
+
+.menu-item:visited {
+  color: #111;
+}
+
+.header {
+  display: inline-block;
+  font-family: "Lato", "Trebuchet MS", sans-serif;
+  font-size: 1.45em;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+
+.body > p {
+  padding-bottom: 18px;
+}
+
+.body > p > a {
+  text-decoration: none;
+  color: #00BF86;
+  /*color: #FF4552;*/
+}
+.body > p > a:hover {
+  color: #06DE9D;
+}
+.emphasis {
+  font-style: italic;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 600px){
+   .container {
+     width: 90%;
+     margin: 40px auto;
+   }
+   .menu {
+     display: block;
+     float: none;
+   }
+   .menu-item {
+     padding: 0 35px 0 0;
+   }
+   .navbar {
+     margin-bottom: 40px;
+   }
+   .header {
+     margin-bottom: 10px;
+   }
+ }
+
+
+/* Talks page */
+
+.talk-intro {
+  margin-bottom: 30px;
+}
+
+.hr {
+  width: 80px;
+  height: 1px;
+  background-color: #E3E3E3;
+  margin: 0 auto 50px auto;
+}
+
+.talk-video {
+  margin-bottom: 65px;
+}
+
+.talk-video > a {
+  max-width: 40%;
+  float: right;
+}
+
+.talk-description {
+  width: 60%;
+  display: inline-block;
+}
+
+.talk-title > a {
+  color: #111;
+  font-weight: 400;
+}
+
+.talk-title > a:hover {
+  color: #00BF86;
+}
+
+.talk-description > p {
+  margin: 0;
+  padding: 0 10px 5px 0;
+}
+
+.talk-body {
+  font-style: italic;
+}
+
+.talk-text {
+  margin-bottom: 50px;
+}
+
+.talk-text > p{
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.talk-text > .talk-title {
+  display: inline-block;
+  font-weight: 400;
+}
+
+.talk-text > .date {
+  display: inline-block;
+  float: right;
+}
+
+/* Writings page */
+
+.writings > ul {
+  padding-left: 0px;
+  color: #277FE4;
+  list-style: none;
+}
+
+.writings > ul > li > a {
+  display: block;
+  color: #111;
+  padding-bottom: 20px;
+}
+
+.writings > ul > li > a:hover {
+  color: #00BF86;
+}
+
+
+/* Contact page */
+
+#email > a {
+  color: #00BF86
+}
+
+.footer {
+  position:relative;
+  bottom:0;
+  left: 0;
+  right: 0;
+  height:50px;
+  text-align: center;
+  font-size: 8px;
+  color: #656464;
+  white-space: pre;
+  font-family: monospace;
+}
+
+.footer-contact {
+  position: absolute;
+}
+
+img {
+	opacity: 1;
+	transition: opacity 0.5s;
+}
+
+img[data-src] {
+	opacity: 0;
+}
+
