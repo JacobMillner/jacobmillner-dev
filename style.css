@@ -14,7 +14,7 @@ a {
 }
 
 body {
-  background-color: #FCFCFC;
+  background-color: #fcfcfc;
 }
 
 .container {
@@ -49,7 +49,7 @@ body {
 
 .header {
   display: inline-block;
-  font-family: "Lato", "Trebuchet MS", sans-serif;
+  font-family: 'Lato', 'Trebuchet MS', sans-serif;
   font-size: 1.45em;
   font-weight: 700;
   text-decoration: none;
@@ -62,11 +62,11 @@ body {
 
 .body > p > a {
   text-decoration: none;
-  color: #00BF86;
+  color: #00bf86;
   /*color: #FF4552;*/
 }
 .body > p > a:hover {
-  color: #06DE9D;
+  color: #06de9d;
 }
 .emphasis {
   font-style: italic;
@@ -76,26 +76,25 @@ img {
   max-width: 100%;
 }
 
-@media (max-width: 600px){
-   .container {
-     width: 90%;
-     margin: 40px auto;
-   }
-   .menu {
-     display: block;
-     float: none;
-   }
-   .menu-item {
-     padding: 0 35px 0 0;
-   }
-   .navbar {
-     margin-bottom: 40px;
-   }
-   .header {
-     margin-bottom: 10px;
-   }
- }
-
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+    margin: 40px auto;
+  }
+  .menu {
+    display: block;
+    float: none;
+  }
+  .menu-item {
+    padding: 0 35px 0 0;
+  }
+  .navbar {
+    margin-bottom: 40px;
+  }
+  .header {
+    margin-bottom: 10px;
+  }
+}
 
 /* Talks page */
 
@@ -106,7 +105,7 @@ img {
 .hr {
   width: 80px;
   height: 1px;
-  background-color: #E3E3E3;
+  background-color: #e3e3e3;
   margin: 0 auto 50px auto;
 }
 
@@ -130,7 +129,7 @@ img {
 }
 
 .talk-title > a:hover {
-  color: #00BF86;
+  color: #00bf86;
 }
 
 .talk-description > p {
@@ -146,7 +145,7 @@ img {
   margin-bottom: 50px;
 }
 
-.talk-text > p{
+.talk-text > p {
   margin: 0;
   padding-bottom: 5px;
 }
@@ -165,7 +164,7 @@ img {
 
 .writings > ul {
   padding-left: 0px;
-  color: #277FE4;
+  color: #277fe4;
   list-style: none;
 }
 
@@ -176,22 +175,21 @@ img {
 }
 
 .writings > ul > li > a:hover {
-  color: #00BF86;
+  color: #00bf86;
 }
-
 
 /* Contact page */
 
 #email > a {
-  color: #00BF86
+  color: #00bf86;
 }
 
 .footer {
-  position:relative;
-  bottom:0;
+  position: relative;
+  bottom: 0;
   left: 0;
   right: 0;
-  height:50px;
+  height: 50px;
   text-align: center;
   font-size: 8px;
   color: #656464;
@@ -204,11 +202,16 @@ img {
 }
 
 img {
-	opacity: 1;
-	transition: opacity 0.5s;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
-img[data-src] {
-	opacity: 0;
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
