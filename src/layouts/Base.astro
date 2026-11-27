@@ -19,6 +19,13 @@ const fullTitle = title === siteName ? siteName : `${title} · ${siteName}`;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <style is:inline>
+      html {
+        background-color: #fcfcfc;
+      }
+    </style>
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={fullTitle} />
