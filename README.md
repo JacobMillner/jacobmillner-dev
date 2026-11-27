@@ -70,8 +70,10 @@ npm run preview    # serve the production build locally
 ## What markdown can do
 
 - **LaTeX math** — `$...$` inline, `$$...$$` display. Rendered to HTML+CSS at
-  build time by KaTeX; no client-side JS. Caveat: `$` opens math, so escape
-  literal dollars in prose as `\$`.
+  build time by KaTeX; no client-side JS. Two caveats: `$` opens math, so
+  escape literal dollars in prose as `\$`; and for *display* math the `$$`
+  fences must be on their own lines — `$$x$$` inline in a paragraph renders
+  as inline math, not centered display.
 - **Mermaid diagrams** — ```` ```mermaid ```` fenced blocks, rendered in the
   browser. The mermaid library only downloads on pages that contain a diagram.
 - **Charts** — ```` ```chart ```` fenced blocks containing JSON, rendered with
