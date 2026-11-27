@@ -83,8 +83,10 @@ example of every feature.
 | `.github/dependabot.yml` | Monthly automated dependency update PRs |
 | `.nvmrc` | Pins the Node version so CI and laptop agree |
 
-Old URLs (`/blog.html`, `/contact.html`, `/nothingtoseehere.html`) redirect to
-their new homes via small meta-refresh stubs in `public/`.
+Old URLs (`/blog.html`, `/contact.html`, `/nothingtoseehere.html`) now land on
+the 404 page. They can't redirect: a `blog.html` file would collide with the
+`/blog` route (GitHub Pages resolves extensionless URLs to the `.html` file
+first), which caused a redirect loop.
 
 ## Dependencies
 
