@@ -1,0 +1,72 @@
+---
+import Base from './Base.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, tags } = post.data;
+---
+
+<Base title={title} description={description}>
+  <article>
+    <header class="post-header">
+      <h1>{title}</h1>
+      <div class="post-meta">
+        <FormattedDate date={pubDate} />
+        {
+          updatedDate && (
+            <span>
+              updated <FormattedDate date={updatedDate} />
+            </span>
+          )
+        }
+        <div class="tags">
+          {tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </header>
+    <div class="post-body">
+      <slot />
+    </div>
+  </article>
+</Base>
+
+<script>
+  // Mermaid diagrams: the library is only downloaded on pages that contain
+  // a diagram (```mermaid fenced block). Vite code-splits the dynamic import.
+  const mermaidBlocks = document.querySelectorAll('pre[data-mermaid]');
+  if (mermaidBlocks.length > 0) {
+    const mermaid = (await import('mermaid')).default;
+    mermaid.initialize({ startOnLoad: false, theme: 'default' });
+    let i = 0;
+    for (const el of mermaidBlocks) {
+      try {
+        const { svg } = await mermaid.render(`mmd-${i++}`, el.textContent ?? '');
+        el.innerHTML = svg;
+      } catch (err) {
+        el.classList.add('chart-error');
+        el.textContent = `mermaid error: ${err instanceof Error ? err.message : String(err)}`;
+      }
+    }
+  }
+</script>
+
+<script>
+  // Charts: chart.js is only downloaded on pages that contain a chart
+  // (```chart fenced block). The config was validated at build time.
+  const canvases = document.querySelectorAll('canvas[data-chart]');
+  if (canvases.length > 0) {
+    const { default: Chart } = await import('chart.js/auto');
+    Chart.defaults.font.family = "'Crimson Text', Georgia, serif";
+    Chart.defaults.color = '#555';
+    for (const canvas of canvases) {
+      new Chart(canvas, JSON.parse(canvas.dataset.chart ?? '{}'));
+    }
+  }
+</script>

@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<Base title="Jacob Millner">
+  <div class="home-body">
+    <p>I'm Jacob. I like computers.</p>
+    <p>I have been a professional software engineer for <span id="years-exp"></span> years.</p>
+    <p>I'm an expert in full stack distributed blah blah blah...</p>
+    <img class="portrait" src="/jm2.png" alt="Jacob Millner" />
+
+    {
+      posts.length > 0 && (
+        <Fragment>
+          <div class="section-title">Recent writing</div>
+          <div class="hr"></div>
+          <ul class="post-list">
+            {posts.map((post) => (
+              <li class="post-list-item">
+                <a class="post-list-title" href={`/blog/${post.id}/`}>
+                  {post.data.title}
+                </a>
+                <div class="post-list-meta">
+                  <FormattedDate date={post.data.pubDate} />
+                </div>
+                <p class="post-list-description">{post.data.description}</p>
+              </li>
+            ))}
+          </ul>
+          <p>
+            <a href="/blog">All posts →</a>
+          </p>
+        </Fragment>
+      )
+    }
+  </div>
+</Base>
+
+<script>
+  var start = new Date(2013, 7, 1);
+  var now = new Date();
+  var years = Math.floor((now - start) / (365.25 * 24 * 60 * 60 * 1000));
+  var el = document.getElementById('years-exp');
+  if (el) el.textContent = String(years);
+</script>

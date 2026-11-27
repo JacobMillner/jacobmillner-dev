@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Contact" description="How to reach Jacob Millner.">
+  <div class="home-body">
+    <p>You can email me at <span id="email"></span></p>
+  </div>
+</Base>
+
+<script>
+  // maybe this will stop the spam
+  function goAwayBots() {
+    const username = 'jacobdonaldmillner';
+    const hostname = 'gmail.com';
+    const linktext = username + '@' + hostname;
+    const emailContainer = document.getElementById('email');
+    if (emailContainer) {
+      emailContainer.innerHTML =
+        "<a href='" + 'mail' + 'to:' + username + '@' + hostname + "'>" + linktext + '</a>';
+    }
+  }
+
+  goAwayBots();
+</script>

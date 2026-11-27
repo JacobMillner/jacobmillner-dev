@@ -1,0 +1,26 @@
+{
+  "name": "jacobmillner-dev",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "new-post": "node scripts/new-post.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.10",
+    "@astrojs/rss": "^4.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "astro": "^7.0.0",
+    "chart.js": "^4.4.0",
+    "katex": "^0.19.1",
+    "mermaid": "^11.0.0",
+    "rehype-katex": "^7.0.0",
+    "remark-math": "^6.0.0"
+  },
+  "overrides": {
+    "katex": "^0.19.1"
+  }
+}

@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+const posts = (
+  await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const byYear = new Map<number, CollectionEntry<'blog'>[]>();
+for (const post of posts) {
+  const year = post.data.pubDate.getFullYear();
+  if (!byYear.has(year)) byYear.set(year, []);
+  byYear.get(year)!.push(post);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+<Base title="Blog" description="Ye olde blog posts by Jacob Millner.">
+  <p class="talk-intro">Ye olde blog posts</p>
+  <div class="hr"></div>
+  {
+    years.map((year) => (
+      <section>
+        <h2 class="post-list-year">{year}</h2>
+        <ul class="post-list">
+          {byYear.get(year)!.map((post) => (
+            <li class="post-list-item">
+              <a class="post-list-title" href={`/blog/${post.id}/`}>
+                {post.data.title}
+              </a>
+              <div class="post-list-meta">
+                <FormattedDate date={post.data.pubDate} />
+                <div class="tags">
+                  {post.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <p class="post-list-description">{post.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+  {
+    years.length === 0 && (
+      <p>
+        Nothing yet. Drop a <code>.md</code> file in <code>src/content/blog/</code> and it will
+        appear here.
+      </p>
+    )
+  }
+</Base>

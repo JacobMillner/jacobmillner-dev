@@ -1,0 +1,13 @@
+---
+const { pathname } = Astro.url;
+const current = (prefix: string) => (pathname.startsWith(prefix) ? 'page' : undefined);
+---
+
+<div class="navbar">
+  <a class="header" href="/"> Jacob Millner </a>
+  <div class="menu">
+    <a class="menu-item" href="/blog" aria-current={current('/blog')}>Blog</a>
+    <a class="menu-item" href="/contact" aria-current={current('/contact')}>Contact</a>
+    <a class="menu-item" href="https://github.com/JacobMillner">Github</a>
+  </div>
+</div>

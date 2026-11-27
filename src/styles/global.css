@@ -1,0 +1,362 @@
+/* ————— Jacob Millner, evolved —————
+   Same DNA as the old hand-rolled site: Crimson Text body, Lato headings,
+   #00bf86 accent, near-white background, generous whitespace. Widened the
+   measure a little for long-form reading. */
+
+:root {
+  --bg: #fcfcfc;
+  --text: #111111;
+  --accent: #00bf86;
+  --accent-hover: #06de9d;
+  --muted: #9e9a9a;
+  --border: #e3e3e3;
+  --code-bg: #24292e;
+  --soft: #f1f1f1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  font-family: 'Crimson Text', Georgia, serif;
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+.container {
+  width: min(42rem, 88%);
+  margin: clamp(2.5rem, 9vw, 5.5rem) auto;
+  flex: 1;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Navbar */
+
+.navbar {
+  margin: 0 0 3.5rem 0;
+}
+
+.menu {
+  display: inline-block;
+  float: right;
+  padding-top: 6px;
+}
+
+.menu-item {
+  display: inline-block;
+  padding-left: 35px;
+  color: var(--text);
+}
+
+.menu-item:hover {
+  color: var(--muted);
+}
+
+.menu-item[aria-current='page'] {
+  color: var(--accent);
+}
+
+.header {
+  display: inline-block;
+  font-family: 'Lato', 'Trebuchet MS', sans-serif;
+  font-size: 1.45em;
+  font-weight: 700;
+  color: inherit;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    display: block;
+    float: none;
+  }
+  .menu-item {
+    padding: 0 35px 0 0;
+  }
+  .navbar {
+    margin-bottom: 2.5rem;
+  }
+  .header {
+    margin-bottom: 10px;
+  }
+}
+
+/* Home */
+
+.home-body > p {
+  padding-bottom: 18px;
+  font-size: 1.25em;
+}
+
+.portrait {
+  display: block;
+  margin: 1rem auto 0 auto;
+  max-width: 320px;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.section-title {
+  font-family: 'Lato', 'Trebuchet MS', sans-serif;
+  font-size: 1em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 3.5rem 0 0.5rem 0;
+}
+
+.hr {
+  width: 80px;
+  height: 1px;
+  background-color: var(--border);
+  margin: 1rem 0 2.5rem 0;
+}
+
+/* Blog list */
+
+.talk-intro {
+  font-size: 1.25em;
+  margin: 0 0 1rem 0;
+}
+
+.post-list {
+  padding: 0;
+  list-style: none;
+}
+
+.post-list-year {
+  font-family: 'Lato', 'Trebuchet MS', sans-serif;
+  color: var(--muted);
+  font-size: 1em;
+  margin: 2.2rem 0 0.4rem 0;
+}
+
+.post-list-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-list-item:last-child {
+  border-bottom: none;
+}
+
+.post-list-title {
+  display: block;
+  color: var(--text);
+  font-size: 1.2em;
+}
+
+.post-list-title:hover {
+  color: var(--accent);
+}
+
+.post-list-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+.post-list-description {
+  margin: 0.2rem 0 0 0;
+  color: #555;
+}
+
+/* Tags */
+
+.tag {
+  display: inline-block;
+  font-size: 0.75em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.05em 0.7em;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Post body prose */
+
+.post-header h1 {
+  font-family: 'Lato', 'Trebuchet MS', sans-serif;
+  font-size: 2.1em;
+  line-height: 1.25;
+  margin: 0 0 0.4em 0;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.9em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.post-body {
+  line-height: 1.7;
+}
+
+.post-body > *:first-child {
+  margin-top: 0;
+}
+
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  font-family: 'Lato', 'Trebuchet MS', sans-serif;
+  line-height: 1.3;
+  margin: 2em 0 0.5em 0;
+}
+
+.post-body h2 {
+  font-size: 1.35em;
+}
+
+.post-body h3 {
+  font-size: 1.15em;
+}
+
+.post-body p {
+  margin: 1em 0;
+}
+
+.post-body code {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.82em;
+  background: var(--soft);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+}
+
+.post-body pre {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+.post-body pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.8rem;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.5rem 0;
+  padding: 0.1rem 0 0.1rem 1.2rem;
+  color: #555;
+  font-style: italic;
+}
+
+.post-body table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.post-body th,
+.post-body td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.7rem;
+  text-align: left;
+}
+
+.post-body th {
+  font-family: 'Lato', 'Trebuchet MS', sans-serif;
+  font-size: 0.85em;
+}
+
+/* Math (KaTeX) */
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* Mermaid diagrams (pre-render target; replaced by SVG client-side) */
+
+pre.mermaid {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  text-align: center;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+pre.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+pre.chart-error {
+  border: 1px solid #ff4552;
+  color: #ff4552;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Charts */
+
+.chart-block {
+  margin: 1.5rem 0;
+  padding: 1rem;
+}
+
+/* Footer (cowsay lives here — keep the pre formatting!) */
+
+.footer {
+  text-align: center;
+  font-size: 8px;
+  color: #656464;
+  white-space: pre;
+  font-family: monospace;
+  padding: 0.5rem 0 1rem 0;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
