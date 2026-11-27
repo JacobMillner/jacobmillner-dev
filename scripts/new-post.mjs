@@ -120,10 +120,13 @@ async function choose(kind, dir) {
 try {
   const category = flagCategory ?? (await choose('category', BLOG_DIR));
 
-  let subcategory = null;
-  if (category) {
-    subcategory = flagSub ?? (await choose('subcategory', `${BLOG_DIR}/${category}`));
-  } else if (flagSub) {
+  // Prompt for a subcategory only when the category itself was chosen
+  // interactively; `--category X` without `--sub` means "no subcategory".
+  let subcategory = flagSub;
+  if (category && subcategory === null && flagCategory === null) {
+    subcategory = await choose('subcategory', `${BLOG_DIR}/${category}`);
+  }
+  if (!category && flagSub) {
     console.error('--sub needs --category (subcategories live inside categories)');
     process.exit(1);
   }

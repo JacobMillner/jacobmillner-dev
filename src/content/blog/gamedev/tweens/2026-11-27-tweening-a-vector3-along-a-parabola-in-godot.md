@@ -32,6 +32,10 @@ $$
 In Godot that's `a.lerp(b, t)`. At $t = 0.5$ you're exactly halfway between
 the two points. Useful, but it's a diagonal, not a lob.
 
+*(If $p(t)$ or the formula above reads like static, there's a short primer on
+decoding exactly this kind of thing: [Reading maths, part
+1](/blog/2026-11-27-reading-maths-part-1/).)*
+
 ## The bump
 
 So we add a *bump*: a term that's zero at both ends and tallest in the
