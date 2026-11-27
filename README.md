@@ -6,21 +6,44 @@ GitHub Pages by GitHub Actions.
 ## Writing a post
 
 ```
-npm run new-post "My Post Title"    # scaffolds a draft in src/content/blog/
+npm run new-post "My Post Title"    # asks for category/subcategory, scaffolds a draft
+npm run new-post "My Post Title" -- --category gamedev --sub shaders   # non-interactive
 ```
 
 Then write markdown, and:
 
 ```
-git add src/content/blog/my-post.md
+git add src/content/blog
 git commit -m "new post"
 git push
 ```
 
 Pushing to `main` builds and deploys automatically. That's the whole workflow.
 
-Post files live in `src/content/blog/`. The filename is the URL
-(`2026-11-27-this-blog-builds-itself.md` → `/blog/2026-11-27-this-blog-builds-itself/`).
+### Organizing posts into folders
+
+Posts live in `src/content/blog/`, optionally inside **category** and
+**subcategory** folders (max depth two — the scaffolder enforces this):
+
+```
+src/content/blog/
+├── gamedev/
+│   ├── engine/
+│   │   └── 2027-01-15-ecs-follow-up.md
+│   └── 2027-01-01-my-first-post.md
+└── meta/
+    └── 2026-11-27-this-blog-builds-itself.md
+```
+
+Folders are for **your** organization — useful for collecting a category's
+posts when it's eventually time to compose them into a book. They have zero
+effect on the site: the URL is the filename alone
+(`gamedev/engine/2027-01-15-ecs-follow-up.md` →
+`/blog/2027-01-15-ecs-follow-up/`). Two consequences:
+
+- **Filenames must be unique across all folders** — the date prefix makes
+  that natural. A duplicate fails the build rather than silently colliding.
+- Moving a post between folders later changes nothing on the site.
 
 Frontmatter is validated at build time — a typo'd date or missing title fails
 the build instead of publishing a broken post:

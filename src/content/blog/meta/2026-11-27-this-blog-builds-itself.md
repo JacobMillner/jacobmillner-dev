@@ -40,7 +40,13 @@ flowchart LR
 ```
 
 To preview locally: `npm run dev`, edit, watch it reload. New posts scaffold
-with `npm run new-post "My Title"`.
+with `npm run new-post "My Title"`, which also asks whether the post belongs
+in a category/subcategory folder.
+
+Posts can live in category/subcategory folders
+(`gamedev/engine/2027-01-01-post.md`) — pure file organization with no
+effect on the URL, which stays the filename alone. Handy later for pulling
+one category's posts together into a book.
 
 ## Math
 
