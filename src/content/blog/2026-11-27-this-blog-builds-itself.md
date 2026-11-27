@@ -3,6 +3,7 @@ title: 'This blog builds itself'
 description: 'A tour of the new publishing system: write markdown, push, done. Every feature the blog supports, demonstrated in one post.'
 pubDate: 2026-11-27
 tags: ['meta', 'site']
+draft: true
 ---
 
 The old workflow for this site was: hand-edit HTML, maintain the post list by
